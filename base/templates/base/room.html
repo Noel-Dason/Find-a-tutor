@@ -77,6 +77,20 @@
                 rerum consectetur, voluptatem repudiandae eum ea porro cupiditate provident nulla, deserunt, ab ipsum
                 corporis laboriosam deleniti molestias?
               </div> -->
+             <a href="{% url 'contact'%}"><button>Book a Slot</button></a>
+              <style>button{
+                border: none ;
+                border-radius: 5px;
+                background-color: #c3eaea;
+                height: 45px;
+                width: 120px;
+                margin-right: 25px;
+              }
+              button:hover{
+                background: #2ecc71;
+                transition: all .2s linear;
+              }
+                </style>
               <span class="room__topics">{{room.topic}}</span>
             </div>
             <div class="room__conversation">
@@ -141,8 +155,10 @@
             </a>
            {% endfor %} 
           </div>
+           
         </div>
         <!--  End -->
+        <!-- <button>Pay Now</button> -->
       </div>
     </main>
     <script src="script.js"></script>

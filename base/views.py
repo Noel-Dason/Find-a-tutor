@@ -66,6 +66,45 @@ def registerPage(request):
     return render(request, 'base/login_register.html', {'form': form})
 
 
+def payment(request):
+    page = 'payment'
+    # context = {'page': page}
+    return render(request, 'base/payment.html', {'payment': payment})
+
+def contact(request):
+    page = 'contact'
+    # context = {'page': page}
+    return render(request, 'base/contact.html', {'contact': contact})
+
+def final(request):
+    page = 'final'
+    # context = {'page': page}
+    return render(request, 'base/final.html', {'final': final})
+
+
+
+def logoutUser(request):
+    logout(request)
+    return redirect('home')
+
+
+def registerPage(request):
+    form = UserCreationForm()
+
+    if request.method == 'POST':
+        form = UserCreationForm(request.POST)
+        if form.is_valid():
+            user = form.save(commit=False)
+            user.username = user.username.lower()
+            user.save()
+            login(request, user)
+            return redirect('home')
+        else:
+            messages.error(request, 'An error occures during registration')
+
+    return render(request, 'base/login_register.html', {'form': form})
+
+
 def home(request):
     q = request.GET.get('q') if request.GET.get('q') != None else ''
     rooms = Room.objects.filter(
